@@ -60,6 +60,7 @@ export default {
         return {
             titulo: "Productos",
             productos: [],
+            productoSeleccionado: null,
         };
     },
     mounted() {
@@ -74,6 +75,12 @@ export default {
             } catch (error) {
                 console.log("Error al hacer la petición", error);
             }
+        },
+        verProducto(producto) {
+            this.productoSeleccionado = producto;
+        },
+        cerrarModal() {
+            this.productoSeleccionado = null;
         },
     },
 };

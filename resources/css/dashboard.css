@@ -59,6 +59,7 @@ table {
     }
     .close {
     position: absolute;
+    color: #dc3545;
     top: 10px;
     right: 10px;
     font-size: 20px;
