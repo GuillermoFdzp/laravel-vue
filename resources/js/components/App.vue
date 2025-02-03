@@ -36,6 +36,20 @@
             </tr>
         </tbody>
     </table>
+    <!-- Modal de detalles del producto -->
+    <div v-if="productoSeleccionado" class="modal">
+        <div class="modal-content">
+            <span class="close" @click="cerrarModal">&times;</span>
+            <h3>Detalles del Producto</h3>
+            <p><strong>ID:</strong> {{ productoSeleccionado.id }}</p>
+            <p><strong>Nombre:</strong> {{ productoSeleccionado.title }}</p>
+            <p><strong>Precio:</strong> ${{ productoSeleccionado.price }}</p>
+            <p>
+                <strong>Descripción:</strong>
+                {{ productoSeleccionado.description }}
+            </p>
+        </div>
+    </div>
 </template>
 
 <script>
