@@ -112,11 +112,12 @@ export default {
         },
         async guardarEdicion() {
             try {
-                await axios.put(`/api/products/${this.productoEditando.id}`,
+                await axios.put(
+                    `/api/products/${this.productoEditando.id}`,
                     this.productoEditando
                 );
                 // Actualizar la lista de productos con los nuevos
-            
+
                 const index = this.productos.findIndex(
                     (p) => p.id === this.productoEditando.id
                 );
@@ -132,6 +133,21 @@ export default {
         },
         cerrarModalEdicion() {
             this.productoEditando = null;
+        },
+
+        async eliminarProducto(id) {
+            if (
+                confirm("¿Estás seguro de que quieres eliminareste producto?")
+            ) {
+                try {
+                    await axios.delete(`/api/products/${id}`);
+                    this.productos = this.productos.filter(
+                        (producto) => producto.id !== id
+                    );
+                } catch (error) {
+                    console.error("Error al eliminar el producto:", error);
+                }
+            }
         },
     },
 };
